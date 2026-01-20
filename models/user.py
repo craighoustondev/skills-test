@@ -1,3 +1,5 @@
 class User:
-  name: str
-  email: str
+  def __init__(self, name: str, email: str):
+    self.name = name
+    self.email = email
+    self.email_verified = False
