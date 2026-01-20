@@ -3,6 +3,11 @@
 ## Purpose
 Keep code easy to understand and safe to change by limiting unnecessary dependencies and abstractions.
 
+## When to consult
+- Adding imports or dependencies to a module
+- Considering whether to create an abstraction or interface
+- Integrating with external libraries or frameworks
+
 ## Instructions
 - Minimize dependencies between modules.
 - Only introduce abstractions if they make code easier to understand or reduce duplication.

@@ -3,6 +3,11 @@
 ## Purpose
 Promote small, incremental changes and fast feedback loops.
 
+## When to consult
+- Planning how to implement a multi-step task
+- Deciding whether to split a PR or commit
+- Reviewing the size of files or changes
+
 ## Instructions
 - Break work into small, understandable units.
 - Keep files and modules manageable; avoid large files.

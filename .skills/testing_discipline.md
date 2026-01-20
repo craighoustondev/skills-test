@@ -3,6 +3,11 @@
 ## Purpose
 Maintain confidence in code through clear, behaviour-focused tests.
 
+## When to consult
+- Writing or modifying tests
+- Deciding what to test and how to structure test cases
+- Choosing whether/how to use mocks
+
 ## Instructions
 - Test behaviour, not implementation details.
 - Follow a clear structure (Arrange-Act-Assert).

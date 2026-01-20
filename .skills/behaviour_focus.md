@@ -3,6 +3,11 @@
 ## Purpose
 Ensure code reflects the intended user behaviour, not internal implementation.
 
+## When to consult
+- Naming new functions, classes, or modules
+- Deciding how to organize code
+- Writing test descriptions
+
 ## Instructions
 - Name modules, functions, and tests based on behaviour/outcome, not implementation steps.
 - Organize code around behaviours, not technical layers or frameworks.
