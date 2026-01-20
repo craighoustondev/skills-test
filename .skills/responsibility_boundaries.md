@@ -3,6 +3,11 @@
 ## Purpose
 Guide the agent to suggest modular code with clear responsibilities.
 
+## When to consult
+- Adding new features or functionality
+- Extending existing classes or modules
+- Deciding where new code should live
+
 ## Instructions
 - Prefer creating a new module or function when a change introduces a new responsibility.
 - Avoid adding behaviour that doesn’t clearly belong to the existing module.
