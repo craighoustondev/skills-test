@@ -1,0 +1,7 @@
+Before starting any coding task, read all files in the `.skills/` directory:
+
+- .skills/behaviour_focus.md
+- .skills/minimizing_coupling.md
+- .skills/responsibility_boundaries.md
+- .skills/safe_change.md
+- .skills/testing_discipline.md
