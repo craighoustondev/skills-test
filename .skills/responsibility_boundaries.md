@@ -1,20 +1,75 @@
-# Skill: Responsibility Boundaries & Ease of Change
+# Skill: Responsibility Boundaries
 
 ## Purpose
-Guide the agent to suggest modular code with clear responsibilities.
+Guide modular code with clear, single responsibilities per module.
 
 ## When to consult
 - Adding new features or functionality
 - Extending existing classes or modules
 - Deciding where new code should live
+- A file exceeds 200 lines
 
 ## Instructions
-- Prefer creating a new module or function when a change introduces a new responsibility.
-- Avoid adding behaviour that doesn’t clearly belong to the existing module.
-- Keep related behaviour and data physically close within a module.
-- Flag large files or modules with unclear responsibilities.
+
+### The single question test
+Before adding code to an existing module, ask:
+
+*"Can I describe what this module does in one sentence without using 'and'?"*
+
+- If yes → the responsibility is clear
+- If no → consider splitting
+
+### Decision tree: Where should new code live?
+
+```
+New feature/behaviour needed
+    │
+    ├─ Does it fit an existing module's single responsibility?
+    │   ├─ Yes → Add it there
+    │   └─ No ↓
+    │
+    ├─ Is it a new responsibility?
+    │   ├─ Yes → Create a new module
+    │   └─ No, it's shared logic ↓
+    │
+    └─ Is it used by 3+ modules?
+        ├─ Yes → Create a shared utility module
+        └─ No → Duplicate it (duplication is cheaper than wrong abstraction)
+```
+
+### Size thresholds (guidelines, not rules)
+| Metric | Review threshold | Action |
+|--------|------------------|--------|
+| File length | > 200 lines | Consider splitting by responsibility |
+| Function length | > 30 lines | Extract sub-functions |
+| Class methods | > 10 methods | May have multiple responsibilities |
+| Parameters | > 4 parameters | Consider a parameter object or splitting |
+
+### Example: Splitting by responsibility
+
+```python
+# ❌ user.py with mixed responsibilities (300 lines)
+class User:
+    def __init__(self, name, email): ...
+    def validate_email(self): ...      # validation
+    def send_welcome_email(self): ...  # notification
+    def hash_password(self): ...       # security
+    def save(self): ...                # persistence
+
+# ✅ Split by responsibility
+# users/user.py - core entity
+class User:
+    def __init__(self, name, email): ...
+
+# users/registration.py - registration workflow
+def register_user(name, email, password): ...
+
+# users/notifications.py - user notifications
+def send_welcome_email(user): ...
+```
 
 ## Failure modes to watch
-- Extending existing modules just for convenience.
-- Ignoring unclear responsibility smells.
-- Scattering related behaviour across multiple modules unnecessarily.
+- Adding "just one more method" to an already large class
+- Modules named `utils.py`, `helpers.py`, or `common.py` (responsibility unclear)
+- Methods that don't use `self` (probably belongs elsewhere)
+- Comments like "# TODO: refactor this" that never get addressed

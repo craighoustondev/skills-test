@@ -1,20 +1,48 @@
 # Skill: Behaviour & User Focus
 
 ## Purpose
-Ensure code reflects the intended user behaviour, not internal implementation.
+Ensure code reflects intended user behaviour, not internal implementation details.
 
 ## When to consult
 - Naming new functions, classes, or modules
 - Deciding how to organize code
-- Writing test descriptions
+- Reviewing existing names that feel unclear
 
 ## Instructions
-- Name modules, functions, and tests based on behaviour/outcome, not implementation steps.
-- Organize code around behaviours, not technical layers or frameworks.
-- Write tests that describe behaviour; they should not need to change if the implementation changes.
-- Clarify expected behaviour before committing to an implementation.
+
+### Naming
+Name things by **what they achieve**, not **how they work**.
+
+| ❌ Implementation-focused | ✅ Behaviour-focused |
+|---------------------------|----------------------|
+| `hash_password()` | `secure_password()` |
+| `send_smtp_email()` | `notify_user()` |
+| `query_database_for_users()` | `find_users()` |
+| `run_validation_loop()` | `validate_order()` |
+| `UserDBModel` | `User` |
+
+### Decision heuristic
+When naming, ask: *"If the implementation changed completely, would this name still make sense?"*
+
+- If yes → good name
+- If no → rename to describe the outcome
+
+### Organization
+Group code by **behaviour/capability**, not by technical layer.
+
+```
+# ❌ Organized by layer
+models/user.py
+services/user_service.py
+validators/user_validator.py
+
+# ✅ Organized by behaviour
+users/user.py           # User entity and core behaviour
+users/registration.py   # Registration workflow
+users/verification.py   # Email verification workflow
+```
 
 ## Failure modes to watch
-- Naming things after internal steps instead of what they achieve.
-- Leaving related behaviour scattered because refactoring feels inconvenient.
-- Writing tests tightly coupled to implementation.
+- Names that mention frameworks, libraries, or protocols (e.g., `SQLAlchemyUser`, `HTTPClient`)
+- Names that describe steps instead of outcomes (e.g., `loop_and_filter()`)
+- Splitting behaviour across layers instead of keeping it cohesive
