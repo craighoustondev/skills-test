@@ -70,6 +70,4 @@ def send_welcome_email(user): ...
 
 ## Failure modes to watch
 - Adding "just one more method" to an already large class
-- Modules named `utils.py`, `helpers.py`, or `common.py` (responsibility unclear)
-- Methods that don't use `self` (probably belongs elsewhere)
 - Comments like "# TODO: refactor this" that never get addressed

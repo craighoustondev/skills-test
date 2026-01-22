@@ -47,6 +47,5 @@ If none apply, prefer concrete code over abstraction.
 
 ## Failure modes to watch
 - Importing a large library for one small function (copy the function instead)
-- Framework-specific types in domain code (e.g., `SQLAlchemySession` as a parameter)
 - Premature abstractions ("we might need this later")
 - God modules that everything imports from

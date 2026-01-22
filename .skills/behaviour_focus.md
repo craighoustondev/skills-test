@@ -43,6 +43,5 @@ users/verification.py   # Email verification workflow
 ```
 
 ## Failure modes to watch
-- Names that mention frameworks, libraries, or protocols (e.g., `SQLAlchemyUser`, `HTTPClient`)
-- Names that describe steps instead of outcomes (e.g., `loop_and_filter()`)
 - Splitting behaviour across layers instead of keeping it cohesive
+- Names that feel awkward to say out loud when describing what code does

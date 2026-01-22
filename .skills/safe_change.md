@@ -62,7 +62,6 @@ When suggesting commits:
 | One logical change per commit | Easy to review, easy to revert |
 | Commit message explains *why* | Future readers need context |
 | Don't bundle unrelated changes | Even if done in the same session |
-| Commit working states only | No "WIP" commits that break things |
 
 ### Verification checkpoints
 
@@ -92,4 +91,3 @@ Could the wrong choice waste significant effort?
 - Making all changes at once, then debugging a tangled mess
 - Proceeding with uncertainty when asking would take 10 seconds
 - Bundling "one more quick fix" into an unrelated change
-- Leaving the codebase in a broken state between steps

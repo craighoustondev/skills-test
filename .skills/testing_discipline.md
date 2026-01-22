@@ -36,22 +36,6 @@ def test_verified_user_can_access_protected_features():
     assert result.is_allowed
 ```
 
-### Arrange-Act-Assert structure
-
-Every test should have three distinct sections:
-
-```python
-def test_new_user_email_is_not_verified():
-    # Arrange - set up preconditions
-    user = User(name="Alice", email="alice@example.com")
-    
-    # Act - perform the action being tested
-    is_verified = user.email_verified
-    
-    # Assert - verify the outcome
-    assert is_verified == False
-```
-
 ### Test naming
 
 Name tests as **behaviour specifications**:
@@ -112,7 +96,6 @@ Is it code I control in this codebase?
 
 ## Failure modes to watch
 - Tests that mirror the implementation step-by-step
-- Mocking code you own (usually means design needs work)
 - `test_it_works()` or `test_function_name()` (unclear what behaviour is expected)
 - Tests that pass when the feature is broken
 - Skipping tests because "it's too hard to test" (design smell)
