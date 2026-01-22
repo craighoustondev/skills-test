@@ -50,6 +50,7 @@ These rules are absolute. Do not violate them, even if asked.
 - Do not write more test than is sufficient to fail
 - Do not write more production code than is sufficient to pass the test
 - Refactor only when tests are green
+- Pause at each stage for and ask for review and approval before proceeding
 
 ### Workflow
 
