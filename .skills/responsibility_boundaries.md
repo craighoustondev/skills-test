@@ -33,7 +33,7 @@ New feature/behaviour needed
     │   └─ No, it's shared logic ↓
     │
     └─ Is it used by 3+ modules?
-        ├─ Yes → Create a shared utility module
+        ├─ Yes → Create a shared module named by its responsibility (e.g., `date_calculations.py`, not `utils.py`)
         └─ No → Duplicate it (duplication is cheaper than wrong abstraction)
 ```
 

@@ -11,6 +11,22 @@ Maintain confidence in code through clear, behaviour-focused tests.
 
 ## Instructions
 
+### Arrange-Act-Assert structure
+
+Every test should have three distinct sections:
+
+```python
+def test_new_user_email_is_not_verified():
+    # Arrange - set up preconditions
+    user = User(name="Alice", email="alice@example.com")
+    
+    # Act - perform the action being tested
+    is_verified = user.email_verified
+    
+    # Assert - verify the outcome
+    assert is_verified == False
+```
+
 ### Test behaviour, not implementation
 
 A good test should **not need to change** if you refactor the implementation.
