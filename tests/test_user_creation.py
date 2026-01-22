@@ -1,6 +1,8 @@
 import pytest
+from datetime import datetime
 
 from models.user import User, Address, InvalidEmail
+from models.training_course import TrainingCourse, CourseFull
 
 
 class TestUserCreation:
@@ -62,3 +64,62 @@ class TestUserCreation:
 
         # Assert
         assert user.address.second_line == "123 Main Street"
+
+
+class TestUserRegistration:
+    def test_user_can_register_for_training_course(self):
+        # Arrange
+        address = Address(
+            first_line="123 Main Street",
+            town="London",
+            postcode="SW1A 1AA",
+        )
+        user = User.create(
+            first_name="John",
+            last_name="Doe",
+            email="john.doe@example.com",
+            address=address,
+        )
+        course = TrainingCourse(
+            title="Python Fundamentals",
+            reference_number="PF-001",
+            scheduled_at=datetime(2026, 3, 15, 9, 0),
+            max_students=10,
+        )
+
+        # Act
+        user.register_for_course(course)
+
+        # Assert
+        assert course in user.registered_courses
+
+    def test_user_cannot_register_for_full_course(self):
+        # Arrange
+        address = Address(
+            first_line="123 Main Street",
+            town="London",
+            postcode="SW1A 1AA",
+        )
+        first_user = User.create(
+            first_name="John",
+            last_name="Doe",
+            email="john.doe@example.com",
+            address=address,
+        )
+        second_user = User.create(
+            first_name="Jane",
+            last_name="Doe",
+            email="jane.doe@example.com",
+            address=address,
+        )
+        course = TrainingCourse(
+            title="Python Fundamentals",
+            reference_number="PF-001",
+            scheduled_at=datetime(2026, 3, 15, 9, 0),
+            max_students=1,
+        )
+        first_user.register_for_course(course)
+
+        # Act & Assert
+        with pytest.raises(CourseFull):
+            second_user.register_for_course(course)

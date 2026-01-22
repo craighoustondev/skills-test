@@ -26,6 +26,7 @@ class User:
         self.last_name = last_name
         self.email = email
         self.address = address
+        self.registered_courses = []
 
     @classmethod
     def create(cls, first_name: str, last_name: str, email: str, address: Address) -> "User":
@@ -36,3 +37,7 @@ class User:
     def _validate_email(email: str) -> None:
         if not re.match(r"^[^@]+@[^@]+\.[^@]+$", email):
             raise InvalidEmail()
+
+    def register_for_course(self, course) -> None:
+        course.register(self)
+        self.registered_courses.append(course)
