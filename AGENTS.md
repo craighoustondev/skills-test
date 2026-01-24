@@ -31,6 +31,7 @@ These rules are absolute. Do not violate them, even if asked.
 
 - **Always** use Arrange-Act-Assert structure in tests
 - **Never** mock code you own/control in this codebase — only mock at external boundaries
+- **Always** include the scenario being tested using "when" to describe the condition. Use the format `test_<expected_outcome>_when_<condition>` E.g. test_creates_payment_when_valid_data_provided() or test_can_not_add_user_when_email_already_exists()
 
 ---
 
@@ -47,10 +48,10 @@ These rules are absolute. Do not violate them, even if asked.
 ### Rules
 
 - Do not write production code without a failing test first
-- Do not write more test than is sufficient to fail
+- Do not write more tests than is sufficient to fail
 - Do not write more production code than is sufficient to pass the test
 - Refactor only when tests are green
-- Pause at each stage for and ask for review and approval before proceeding
+- Pause at each stage and ask for review and approval before proceeding
 
 ### Workflow
 
